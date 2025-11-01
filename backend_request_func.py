@@ -383,6 +383,8 @@ async def async_request_dynamo_completions(
                         if chunk.startswith("event:") or chunk.startswith(":"):
                             continue
 
+                        chunk = chunk.removeprefix("data: ")
+
                         if chunk != "[DONE]":
                             data = json.loads(chunk)
 
